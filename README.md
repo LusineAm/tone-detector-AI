@@ -34,10 +34,12 @@ NPM (comes with Node.js)
 3. Get an API Key
    This project uses the Sapling AI Tone API to analyze emotional tone. Follow these steps to get an API key:
 
+```
    1 Go to Sapling AI API.
    2 Sign up for a free account or log in.
    3 Go to the "API" section in your account dashboard.
    4 Generate an API key.
+```
 
 4. Configure the API Key
    Create a .env file in the root of your project as in example.
