@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+## Emotional Tone Detection Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple web application that detects the emotional tone of text using an AI API (Sapling's tone checker). It allows users to enter text, which is then analyzed for various emotional tones like angry, neutral, repulsed, and more. The results are displayed with corresponding emojis and confidence percentages.
 
-## Available Scripts
+Features
+Detects emotional tones such as angry, neutral, repulsed, and others using AI.
+Simple and user-friendly interface built with React.
+Displays emotional tones with confidence levels and corresponding emojis.
+Supports live API requests and mock data for testing.
+Prerequisites
+To run this project, you will need to have the following installed:
 
-In the project directory, you can run:
+Node.js (v12 or higher)
+NPM (comes with Node.js)
 
-### `npm start`
+## Setup Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the Repository
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```
+   git clone https://github.com/lusineam/tone-detector-AI.git
+   ```
 
-### `npm test`
+   ```
+   cd emotional-tone-detector
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install Dependencies
 
-### `npm run build`
+   ```
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Get an API Key
+   This project uses the Sapling AI Tone API to analyze emotional tone. Follow these steps to get an API key:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   1. Go to Sapling AI API.
+   2. Sign up for a free account or log in.
+   3. Go to the "API" section in your account dashboard.
+   4. Generate an API key.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Configure the API Key
+   Create a .env file in the root of your project as in example.
 
-### `npm run eject`
+5. Start the Application
+   Start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   The app should now be running at http://localhost:3000.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+6. If you don't have an API key or want to test the application without connecting to the actual API, the application provides an example with mock data. On the  
+   first load of the application, mock data is automatically displayed, simulating a tone analysis result. This allows you to see how the application works without needing an API key.
