@@ -18,10 +18,6 @@ export default function Form({ setResult, setError }) {
     }
 
     try {
-      // clear old results and errors befre new request
-      setResult(null);
-      setError(null);
-
       const response = await axios.post("https://api.sapling.ai/api/v1/tone", {
         key: process.env.REACT_APP_SAPLING_API_KEY, // api key from env
         text, // the text input for tone analysis

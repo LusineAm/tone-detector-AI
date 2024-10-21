@@ -27,3 +27,15 @@ li strong {
 li span {
   color: #a9b7c6;
 }
+
+.charts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.chart {
+  width: 300px;
+  height: 300px;
+}
