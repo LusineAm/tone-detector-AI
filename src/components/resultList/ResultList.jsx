@@ -23,7 +23,7 @@ const ResultList = ({ result }) => {
       },
     ],
     labels: data.map(
-      (item) => `${item.emotion} ${item.emoji}: ${item.percent}% confidence`
+      (item) => `${item.emotion} ${item.emoji}: ${item.percent}% confidence`,
     ),
   };
 
