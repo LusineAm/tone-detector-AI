@@ -4,13 +4,11 @@ import axios from "axios";
 import "./form.css";
 
 export default function Form({ setResult, setError }) {
-  const [text, setText] = useState(""); // state for input text
+  const [text, setText] = useState("");
 
-  // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // prevent submission if the text is empty
     if (!text.trim()) {
       setError("Please enter some text before submitting.");
       setResult(null);
@@ -19,25 +17,24 @@ export default function Form({ setResult, setError }) {
 
     try {
       const response = await axios.post("https://api.sapling.ai/api/v1/tone", {
-        key: process.env.REACT_APP_SAPLING_API_KEY, // api key from env
-        text, // the text input for tone analysis
+        key: process.env.REACT_APP_SAPLING_API_KEY,
+        text,
       });
 
-      setResult(response.data); // update result
-      setError(null); // clear any previous errors
+      setResult(response.data);
+      setError(null);
     } catch (err) {
       const msg =
         err.response?.data?.msg || "Error analyzing tone. Please try again.";
-      setError(msg); // set error state to display error message
+      setError(msg);
       setResult(null);
     }
   };
 
-  // handle key press for "Enter"
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit(e); // call the submit function
+      handleSubmit(e);
     }
   };
 

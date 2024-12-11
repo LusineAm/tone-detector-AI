@@ -14,7 +14,6 @@ const ResultList = ({ result }) => {
     emoji: tone[2],
   }));
 
-  // prepare chart data for chart component
   const chartData = {
     datasets: [
       {
@@ -48,7 +47,6 @@ const ResultList = ({ result }) => {
         </div>
       )}
       <h3>Detected Tones</h3>
-      {/* list of detected tones */}
       <ul>
         {data.map((tone, index) => (
           <li key={index}>
@@ -59,7 +57,6 @@ const ResultList = ({ result }) => {
           </li>
         ))}
       </ul>
-      {/* charts of detected tones */}
       <div className="charts">
         <div className="chart">
           <PieChart chartData={chartData} options={options} />

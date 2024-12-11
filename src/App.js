@@ -15,8 +15,8 @@ const App = () => {
     ],
     sents: ["This project amazing (example from mock data)"],
   };
-  const [result, setResult] = useState(mockResponse); // state for storing API response
-  const [error, setError] = useState(null); // state for storing any error
+  const [result, setResult] = useState(mockResponse);
+  const [error, setError] = useState(null);
 
   return (
     <div className="container">
