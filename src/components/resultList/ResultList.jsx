@@ -2,48 +2,22 @@ import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import PieChart from "../charts/PieChart";
 import BarChart from "../charts/BarChart";
+import { mapData, chartConfig, chartOptions } from "../../helpers/chartHelper";
 
 import "./resultList.css";
 
 Chart.register(CategoryScale);
 
-const ResultList = ({ result }) => {
-  const data = result.overall.map((tone) => ({
-    percent: Math.round(tone[0] * 100),
-    emotion: tone[1],
-    emoji: tone[2],
-  }));
-
-  const chartData = {
-    datasets: [
-      {
-        label: "Emotional Distribution",
-        data: data.map((item) => item.percent),
-        backgroundColor: ["#F8D94A", "#59E3A5", "#40BDF5"],
-      },
-    ],
-    labels: data.map(
-      (item) => `${item.emotion} ${item.emoji}: ${item.percent}% confidence`,
-    ),
-  };
-
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "bottom",
-        align: "start",
-      },
-    },
-  };
+const ResultList = ({ analysisResult }) => {
+  const data = mapData(analysisResult.overall);
+  const chartData = chartConfig(data);
 
   return (
     <div>
-      {result?.sents && (
+      {analysisResult?.sents && (
         <div>
           <h3>Your Sentence</h3>
-          <span>{result.sents}</span>
+          <span>{analysisResult.sents}</span>
         </div>
       )}
       <h3>Detected Tones</h3>
@@ -59,10 +33,10 @@ const ResultList = ({ result }) => {
       </ul>
       <div className="charts">
         <div className="chart">
-          <PieChart chartData={chartData} options={options} />
+          <PieChart chartData={chartData} options={chartOptions} />
         </div>
         <div className="chart">
-          <BarChart chartData={chartData} options={options} />
+          <BarChart chartData={chartData} options={chartOptions} />
         </div>
       </div>
     </div>

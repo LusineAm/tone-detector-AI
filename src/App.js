@@ -1,30 +1,26 @@
 import { useState } from "react";
-
 import Form from "./components/form/Form";
 import ResultList from "./components/resultList/ResultList";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
+import mockData from "./services/mockData";
+import handleFormSubmit from "./services/handleFormSubmit";
 
 import "./App.css";
 
 const App = () => {
-  const mockResponse = {
-    overall: [
-      [0.93, "happy", "😊"],
-      [0.05, "admiring", "😲"],
-      [0.02, "excited", "😀"],
-    ],
-    sents: ["This project amazing (example from mock data)"],
-  };
-  const [result, setResult] = useState(mockResponse);
-  const [error, setError] = useState(null);
+  const [analysisResult, setAnalysisResult] = useState(mockData);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const onSubmit = (text) =>
+    handleFormSubmit(text, setAnalysisResult, setErrorMessage);
 
   return (
     <div className="container">
       <h1>Emotional Tone Detection</h1>
       <p>Detect the tone of a given sentence </p>
-      <Form setResult={setResult} setError={setError} />
-      {result && <ResultList result={result} />}
-      {error && <ErrorMessage error={error} />}
+      <Form onSubmit={onSubmit} />
+      {analysisResult && <ResultList analysisResult={analysisResult} />}
+      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
     </div>
   );
 };
