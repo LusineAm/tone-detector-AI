@@ -2,14 +2,34 @@ import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import PieChart from "../charts/PieChart";
 import BarChart from "../charts/BarChart";
-import { mapData, chartConfig, chartOptions } from "../../helpers/chartHelper";
+import {
+  mapData,
+  chartConfig,
+  pieChartOptions,
+  barChartOptions,
+} from "../../helpers/chartHelper";
 
 import "./resultList.css";
 
 Chart.register(CategoryScale);
 
-const ResultList = ({ analysisResult }) => {
-  const data = mapData(analysisResult.overall);
+interface AnalysisResult {
+  overall: [number, string, string][];
+  sents: string[];
+}
+
+interface ToneData {
+  percent: number;
+  emotion: string;
+  emoji: string;
+}
+
+interface ResultListProps {
+  analysisResult: AnalysisResult;
+}
+
+const ResultList: React.FC<ResultListProps> = ({ analysisResult }) => {
+  const data: ToneData[] = mapData(analysisResult.overall);
   const chartData = chartConfig(data);
 
   return (
@@ -17,7 +37,7 @@ const ResultList = ({ analysisResult }) => {
       {analysisResult?.sents && (
         <div>
           <h3>Your Sentence</h3>
-          <span>{analysisResult.sents}</span>
+          <span>{analysisResult.sents.join(", ")}</span>
         </div>
       )}
       <h3>Detected Tones</h3>
@@ -33,10 +53,10 @@ const ResultList = ({ analysisResult }) => {
       </ul>
       <div className="charts">
         <div className="chart">
-          <PieChart chartData={chartData} options={chartOptions} />
+          <PieChart chartData={chartData} options={pieChartOptions} />
         </div>
         <div className="chart">
-          <BarChart chartData={chartData} options={chartOptions} />
+          <BarChart chartData={chartData} options={barChartOptions} />
         </div>
       </div>
     </div>

@@ -1,16 +1,20 @@
 import { useState } from "react";
-
 import "./form.css";
 
-export default function Form({ onSubmit }) {
-  const [inputText, setInputText] = useState("");
+// Интерфейс для пропсов компонента
+interface FormProps {
+  onSubmit: (inputText: string) => void;
+}
 
-  const handleSubmit = (e) => {
+const Form: React.FC<FormProps> = ({ onSubmit }) => {
+  const [inputText, setInputText] = useState<string>("");
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(inputText);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
@@ -28,4 +32,6 @@ export default function Form({ onSubmit }) {
       <button type="submit">Check Tone</button>
     </form>
   );
-}
+};
+
+export default Form;

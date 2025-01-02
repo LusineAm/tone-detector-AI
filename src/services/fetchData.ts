@@ -1,11 +1,15 @@
 import axios from "axios";
 
-const fetchData = async (text) => {
+type FetchDataResponse = {
+  message: string;
+};
+
+const fetchData = async (text: string): Promise<FetchDataResponse> => {
   const EMPTY_TEXT_ERROR = "Please enter some text before submitting.";
   const DEFAULT_API_ERROR = "Error analyzing tone. Please try again.";
 
   if (!text.trim()) {
-    throw new Error(EMPTY_TEXT_ERROR);
+    throw { message: EMPTY_TEXT_ERROR } as FetchDataResponse;
   }
 
   try {
@@ -17,7 +21,7 @@ const fetchData = async (text) => {
     return response.data;
   } catch (err) {
     const msg = err.response?.data?.msg || DEFAULT_API_ERROR;
-    throw new Error(msg);
+    throw { message: msg } as FetchDataResponse;
   }
 };
 

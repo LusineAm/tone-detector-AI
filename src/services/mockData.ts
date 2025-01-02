@@ -1,4 +1,9 @@
-const mockData = {
+export interface AnalysisResult {
+  overall: [number, string, string][];
+  sents: string[];
+}
+
+const mockData: AnalysisResult = {
   overall: [
     [0.93, "happy", "😊"],
     [0.05, "admiring", "😲"],
