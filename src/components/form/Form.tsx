@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./form.css";
 
-// Интерфейс для пропсов компонента
 interface FormProps {
   onSubmit: (inputText: string) => void;
 }

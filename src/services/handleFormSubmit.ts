@@ -1,7 +1,7 @@
 import fetchData from "./fetchData";
 
 interface SetResultFunction {
-  (result: object): void; // Параметр 'result' можно уточнить, если известно, что именно будет передаваться
+  (result: object): void;
 }
 
 interface SetErrorFunction {
